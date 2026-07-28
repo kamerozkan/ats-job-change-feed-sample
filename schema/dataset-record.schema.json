@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ATS Job Change Feed dataset record",
+  "description": "A normalized open job or CREATED, UPDATED, or CLOSED event from the ATS Job Change Feed Actor.",
+  "type": "object",
+  "required": [
+    "recordType",
+    "jobKey",
+    "ats",
+    "boardSlug",
+    "company",
+    "title",
+    "sourceUrl"
+  ],
+  "properties": {
+    "recordType": {
+      "type": "string",
+      "enum": [
+        "job",
+        "change"
+      ]
+    },
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "CREATED",
+        "UPDATED",
+        "CLOSED"
+      ]
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "detectedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "CLOSED"
+      ]
+    },
+    "id": {
+      "type": "string"
+    },
+    "jobKey": {
+      "type": "string"
+    },
+    "ats": {
+      "type": "string",
+      "enum": [
+        "greenhouse",
+        "lever",
+        "ashby",
+        "workable",
+        "recruitee",
+        "personio",
+        "teamtailor",
+        "workday"
+      ]
+    },
+    "boardSlug": {
+      "type": "string"
+    },
+    "sourceJobId": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "locationDetails": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "dachRegion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "DE",
+        "AT",
+        "CH",
+        "MULTI",
+        null
+      ]
+    },
+    "primaryLocation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "department": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "team": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "employmentType": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "employmentTypeRaw": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "workplaceType": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "workplaceTypeRaw": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "salary": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "descriptionText": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "descriptionHtml": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "publishedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updatedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "applyUrl": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "boardUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "sourceApiUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "boardOrigin": {
+      "type": "string",
+      "enum": [
+        "explicit",
+        "discovered"
+      ]
+    },
+    "discoveredFrom": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "companyId": {
+      "type": "string"
+    },
+    "companyDomain": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "canonicalJobId": {
+      "type": "string"
+    },
+    "duplicateGroupId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "isDuplicate": {
+      "type": "boolean"
+    },
+    "duplicateOf": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kldb": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "languageRequirements": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "firstSeenAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastSeenAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scrapedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "changedFields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "job": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}
