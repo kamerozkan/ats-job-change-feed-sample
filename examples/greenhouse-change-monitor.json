@@ -1,0 +1,15 @@
+{
+  "boards": [
+    {
+      "url": "https://job-boards.greenhouse.io/greenhouse",
+      "company": "Greenhouse"
+    }
+  ],
+  "outputMode": "changes",
+  "stateKey": "greenhouse-example",
+  "includeDescriptions": true,
+  "includeCompensation": true,
+  "emitInitialSnapshotChanges": true,
+  "maxConcurrency": 1,
+  "failOnBoardError": true
+}

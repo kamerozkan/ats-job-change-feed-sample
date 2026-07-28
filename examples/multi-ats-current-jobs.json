@@ -1,0 +1,42 @@
+{
+  "boards": [
+    {
+      "url": "https://job-boards.greenhouse.io/greenhouse",
+      "company": "Greenhouse"
+    },
+    {
+      "url": "https://jobs.lever.co/ae-2",
+      "company": "AE"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/linear",
+      "company": "Linear"
+    },
+    {
+      "url": "https://apply.workable.com/remote-talent-latam",
+      "company": "Remote Talent LATAM"
+    },
+    {
+      "url": "https://jobs.recruitee.com/api/offers",
+      "company": "Tellent"
+    },
+    {
+      "url": "https://personio.jobs.personio.de/xml",
+      "company": "Personio"
+    },
+    {
+      "url": "https://career.teamtailor.com/jobs",
+      "company": "Teamtailor"
+    },
+    {
+      "url": "https://workiva.wd503.myworkdayjobs.com/en-US/careers",
+      "company": "Workiva"
+    }
+  ],
+  "outputMode": "jobs",
+  "stateKey": "multi-ats-example",
+  "includeDescriptions": true,
+  "includeCompensation": true,
+  "maxConcurrency": 8,
+  "failOnBoardError": true
+}

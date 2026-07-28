@@ -1,0 +1,13 @@
+{
+  "boards": [],
+  "companyUrls": [
+    "https://linear.app/careers"
+  ],
+  "outputMode": "changes",
+  "stateKey": "linear-company-discovery",
+  "includeDescriptions": true,
+  "includeCompensation": true,
+  "emitInitialSnapshotChanges": true,
+  "discoveryMaxPages": 5,
+  "failOnDiscoveryError": true
+}
