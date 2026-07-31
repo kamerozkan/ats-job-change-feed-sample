@@ -1,0 +1,20 @@
+[
+  {
+    "recordType": "job",
+    "status": "OPEN",
+    "jobKey": "ashby:example:software-engineer",
+    "ats": "ashby",
+    "boardSlug": "example",
+    "company": "Example GmbH",
+    "title": "Software Engineer",
+    "primaryLocation": "Berlin, Germany",
+    "sourceUrl": "https://jobs.ashbyhq.com/example/software-engineer",
+    "boardUrl": "https://jobs.ashbyhq.com/example",
+    "boardOrigin": "discovered",
+    "discoveredFrom": "https://example.com/careers",
+    "isDuplicate": false,
+    "skills": [
+      "TypeScript"
+    ]
+  }
+]

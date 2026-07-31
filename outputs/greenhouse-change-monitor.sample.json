@@ -1,0 +1,28 @@
+[
+  {
+    "recordType": "change",
+    "eventType": "UPDATED",
+    "eventId": "example-greenhouse-updated-event",
+    "detectedAt": "2026-07-31T12:00:00.000Z",
+    "jobKey": "greenhouse:example:12345",
+    "ats": "greenhouse",
+    "boardSlug": "example",
+    "company": "Example GmbH",
+    "title": "Senior Software Engineer",
+    "sourceUrl": "https://job-boards.greenhouse.io/example/jobs/12345",
+    "changedFields": [
+      "title",
+      "salary"
+    ],
+    "job": {
+      "recordType": "job",
+      "status": "OPEN",
+      "jobKey": "greenhouse:example:12345",
+      "ats": "greenhouse",
+      "boardSlug": "example",
+      "company": "Example GmbH",
+      "title": "Senior Software Engineer",
+      "sourceUrl": "https://job-boards.greenhouse.io/example/jobs/12345"
+    }
+  }
+]

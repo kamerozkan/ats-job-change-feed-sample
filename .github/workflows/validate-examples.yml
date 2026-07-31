@@ -1,0 +1,26 @@
+name: Validate examples
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate JSON files and current input names
+        run: |
+          set -euo pipefail
+          for file in examples/*.json outputs/*.json schema/*.json; do
+            jq empty "$file"
+          done
+          test "$(jq -r '.watchlistId' examples/company-domain-discovery.json)" = "linear-company-discovery"
+          test "$(jq -r '.watchlistId' examples/greenhouse-change-monitor.json)" = "greenhouse-example"
+          test "$(jq -r '.watchlistId' examples/multi-ats-current-jobs.json)" = "multi-ats-example"

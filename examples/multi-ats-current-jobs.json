@@ -34,7 +34,7 @@
     }
   ],
   "outputMode": "jobs",
-  "stateKey": "multi-ats-example",
+  "watchlistId": "multi-ats-example",
   "includeDescriptions": true,
   "includeCompensation": true,
   "maxConcurrency": 8,

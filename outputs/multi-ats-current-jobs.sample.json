@@ -1,0 +1,31 @@
+[
+  {
+    "recordType": "job",
+    "status": "OPEN",
+    "jobKey": "lever:example:data-engineer",
+    "ats": "lever",
+    "boardSlug": "example",
+    "company": "Example GmbH",
+    "title": "Data Engineer",
+    "primaryLocation": "Remote",
+    "sourceUrl": "https://jobs.lever.co/example/data-engineer",
+    "boardUrl": "https://jobs.lever.co/example",
+    "boardOrigin": "explicit",
+    "isDuplicate": false
+  },
+  {
+    "recordType": "job",
+    "status": "OPEN",
+    "jobKey": "workday:example:product-manager",
+    "ats": "workday",
+    "boardSlug": "careers",
+    "company": "Example AG",
+    "title": "Product Manager",
+    "primaryLocation": "Munich, Germany",
+    "dachRegion": "DE",
+    "sourceUrl": "https://example.wd3.myworkdayjobs.com/careers/product-manager",
+    "boardUrl": "https://example.wd3.myworkdayjobs.com/careers",
+    "boardOrigin": "explicit",
+    "isDuplicate": false
+  }
+]

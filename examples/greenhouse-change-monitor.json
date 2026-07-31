@@ -6,7 +6,7 @@
     }
   ],
   "outputMode": "changes",
-  "stateKey": "greenhouse-example",
+  "watchlistId": "greenhouse-example",
   "includeDescriptions": true,
   "includeCompensation": true,
   "emitInitialSnapshotChanges": true,

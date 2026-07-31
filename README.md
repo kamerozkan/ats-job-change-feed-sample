@@ -1,9 +1,11 @@
-> **Live API feed with ongoing maintenance:** [Run ATS Job Change Feed on Apify](https://apify.com/kamerozkan/ats-job-change-feed)
+# ATS Job Scraper API and Career Page Monitor Examples
 
-# ATS Job Change Feed Samples
+[![Validate examples](https://github.com/kamerozkan/ats-job-change-feed-sample/actions/workflows/validate-examples.yml/badge.svg)](https://github.com/kamerozkan/ats-job-change-feed-sample/actions/workflows/validate-examples.yml)
 
-Production-oriented input examples and a documented JSON schema for monitoring
-public company career pages across eight applicant tracking systems:
+> **Live maintained API:** [Run ATS Jobs Scraper API on Apify](https://apify.com/kamerozkan/ats-job-change-feed)
+
+Production-oriented input and output examples for an **ATS job scraper API**, **career page
+monitor**, and **job change feed** covering eight applicant tracking systems:
 Greenhouse, Workday, Lever, Ashby, Workable, Personio, Recruitee, and
 Teamtailor.
 
@@ -19,11 +21,15 @@ closure.
 | [`company-domain-discovery.json`](examples/company-domain-discovery.json) | Discover the ATS board from a public company careers page |
 | [`greenhouse-change-monitor.json`](examples/greenhouse-change-monitor.json) | Monitor one Greenhouse board for created, updated, and closed jobs |
 | [`multi-ats-current-jobs.json`](examples/multi-ats-current-jobs.json) | Return a current normalized snapshot across all eight supported ATS platforms |
+| [`company-domain-discovery.sample.json`](outputs/company-domain-discovery.sample.json) | Sanitized dataset output for a board discovered from a company careers page |
+| [`greenhouse-change-monitor.sample.json`](outputs/greenhouse-change-monitor.sample.json) | Sanitized `UPDATED` event with its embedded normalized job |
+| [`multi-ats-current-jobs.sample.json`](outputs/multi-ats-current-jobs.sample.json) | Sanitized current-job records from two ATS formats |
 | [`dataset-record.schema.json`](schema/dataset-record.schema.json) | Machine-readable schema for dataset records |
 | [`data-schema.md`](docs/data-schema.md) | Human-readable field and output-mode guide |
 
-These inputs are taken from the maintained Actor package rather than invented
-fixtures.
+The three inputs are synchronized with the maintained Actor package. The output files are
+clearly labeled, structurally valid, sanitized samples that avoid redistributing third-party
+job descriptions.
 
 ## Run an example
 
@@ -43,6 +49,33 @@ curl --fail-with-body \
 
 Never commit an API token.
 
+## Use from JavaScript or Python
+
+```javascript
+import { ApifyClient } from 'apify-client';
+
+const client = new ApifyClient({ token: process.env.APIFY_TOKEN });
+const run = await client.actor('kamerozkan/ats-job-change-feed').call({
+  companyUrls: ['https://linear.app/careers'],
+  outputMode: 'changes',
+  watchlistId: 'linear-watchlist',
+});
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+```
+
+```python
+import os
+from apify_client import ApifyClient
+
+client = ApifyClient(os.environ["APIFY_TOKEN"])
+run = client.actor("kamerozkan/ats-job-change-feed").call(run_input={
+    "companyUrls": ["https://linear.app/careers"],
+    "outputMode": "changes",
+    "watchlistId": "linear-watchlist",
+})
+items = client.dataset(run["defaultDatasetId"]).list_items().items
+```
+
 ## Preview the three inputs
 
 <details>
@@ -55,7 +88,7 @@ Never commit an API token.
     "https://linear.app/careers"
   ],
   "outputMode": "changes",
-  "stateKey": "linear-company-discovery",
+  "watchlistId": "linear-company-discovery",
   "includeDescriptions": true,
   "includeCompensation": true,
   "emitInitialSnapshotChanges": true,
@@ -78,7 +111,7 @@ Never commit an API token.
     }
   ],
   "outputMode": "changes",
-  "stateKey": "greenhouse-example",
+  "watchlistId": "greenhouse-example",
   "includeDescriptions": true,
   "includeCompensation": true,
   "emitInitialSnapshotChanges": true,
@@ -129,7 +162,7 @@ Never commit an API token.
     }
   ],
   "outputMode": "jobs",
-  "stateKey": "multi-ats-example",
+  "watchlistId": "multi-ats-example",
   "includeDescriptions": true,
   "includeCompensation": true,
   "maxConcurrency": 8,
@@ -146,8 +179,8 @@ Never commit an API token.
 - `jobs`: Returns every currently open job on every run.
 - `both`: Returns open jobs followed by change records.
 
-Keep one stable `stateKey` per watchlist and do not overlap runs that use the
-same key.
+Keep one stable `watchlistId` per monitor and do not overlap runs that use the
+same ID. Existing integrations that send the legacy `stateKey` field remain supported.
 
 ## Example change record
 
@@ -187,6 +220,40 @@ a third-party job description.
 See the [schema guide](docs/data-schema.md) for identity, provenance, duplicate,
 DACH enrichment, and change-event fields.
 
+## Common use cases
+
+- Monitor competitor career pages for new, updated, and closed roles.
+- Create B2B hiring signals from primary company sources.
+- Build job alerts without repeatedly processing unchanged snapshots.
+- Normalize Greenhouse, Workday, Lever, Ashby, Workable, Personio, Recruitee, and
+  Teamtailor records into one schema.
+- Analyze DACH locations, KldB groups, languages, skills, salary signals, and remote work.
+
+## Pricing behavior
+
+The hosted Actor uses pay-per-event billing. One Actor-start event is charged per run and one
+`job-result` event is charged per dataset row. In `changes` mode, unchanged jobs write no
+dataset rows and create no `job-result` charges. Plan-based volume discounts are configured;
+see the [live Store pricing](https://apify.com/kamerozkan/ats-job-change-feed) before running a
+large baseline.
+
+## FAQ
+
+### Why can a successful run return an empty dataset?
+
+In `changes` mode, an empty dataset normally means there were no changes after the baseline.
+Check `RUN_SUMMARY` in the run's default key-value store for board failures or budget deferrals.
+
+### How are false closures prevented?
+
+The Actor keeps the previous snapshot when a board times out, is throttled, or returns a
+malformed response. A failed source therefore cannot create synthetic `CLOSED` events.
+
+### Does it need an ATS login?
+
+No. The Actor reads public company career pages and public job feeds only. It does not access
+candidate profiles, applications, resumes, or private ATS accounts.
+
 ## Responsible use
 
 The Actor reads public job postings only. It does not access candidate
@@ -205,4 +272,3 @@ redistributing job data. See [DATA_NOTICE.md](DATA_NOTICE.md).
 
 Original code and documentation in this repository are available under the
 [MIT License](LICENSE). Third-party job content is outside that license.
-
