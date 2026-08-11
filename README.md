@@ -21,15 +21,37 @@ closure.
 | [`company-domain-discovery.json`](examples/company-domain-discovery.json) | Discover the ATS board from a public company careers page |
 | [`greenhouse-change-monitor.json`](examples/greenhouse-change-monitor.json) | Monitor one Greenhouse board for created, updated, and closed jobs |
 | [`multi-ats-current-jobs.json`](examples/multi-ats-current-jobs.json) | Return a current normalized snapshot across all eight supported ATS platforms |
+| [`ten-minute-freshness-monitor.json`](examples/ten-minute-freshness-monitor.json) | Configure a stable watchlist for frequent change and SLA monitoring |
+| [`ten-thousand-board-catalog.json`](examples/ten-thousand-board-catalog.json) | Configure one deterministic chunk of the optional large candidate catalog |
 | [`company-domain-discovery.sample.json`](outputs/company-domain-discovery.sample.json) | Sanitized dataset output for a board discovered from a company careers page |
 | [`greenhouse-change-monitor.sample.json`](outputs/greenhouse-change-monitor.sample.json) | Sanitized `UPDATED` event with its embedded normalized job |
 | [`multi-ats-current-jobs.sample.json`](outputs/multi-ats-current-jobs.sample.json) | Sanitized current-job records from two ATS formats |
 | [`dataset-record.schema.json`](schema/dataset-record.schema.json) | Machine-readable schema for dataset records |
 | [`data-schema.md`](docs/data-schema.md) | Human-readable field and output-mode guide |
+| [`pilot-500-boards.json`](benchmarks/pilot-500-boards.json) | Fixed 500-board benchmark input used on 26 July 2026 |
+| [`pilot-500-initial-report.json`](benchmarks/pilot-500-initial-report.json) | First pass and immediate-repeat results, including the repeat-rate limitation |
+| [`pilot-500-recheck-report.json`](benchmarks/pilot-500-recheck-report.json) | Rate-limited 500/500 adapter recheck report |
 
-The three inputs are synchronized with the maintained Actor package. The output files are
+The five inputs are synchronized with the maintained Actor package. The output files are
 clearly labeled, structurally valid, sanitized samples that avoid redistributing third-party
 job descriptions.
+
+## Reproducible quality evidence
+
+Actor build `1.0.24` was verified on 11 August 2026 with 48/48 deterministic tests,
+8/8 live ATS endpoint checks, and a cloud smoke run that returned 13 normalized
+Greenhouse jobs with one requested board, one successful board, and zero failed boards.
+
+The fixed public benchmark is intentionally date-scoped. On 26 July 2026, its first pass
+resolved all 500 boards and observed 15,923 open jobs. An immediate repeat reached only 89.2%
+because several providers rate-limited the burst. The provider-aware recheck then completed
+500/500 boards across all eight adapters. Both reports and the exact board list are included
+above so the published claim can be audited instead of taken on trust.
+
+The current release gate also validates unit and regression tests, TypeScript, all Apify
+schemas, publishing assets, and the complete dependency tree. Live endpoint checks are kept
+separate from deterministic CI because public career boards can be renamed, removed, or
+temporarily rate-limited.
 
 ## Run an example
 
@@ -76,7 +98,7 @@ run = client.actor("kamerozkan/ats-job-change-feed").call(run_input={
 items = client.dataset(run["defaultDatasetId"]).list_items().items
 ```
 
-## Preview the three inputs
+## Preview the core inputs
 
 <details>
 <summary><strong>1. Discover a board from a company careers page</strong></summary>

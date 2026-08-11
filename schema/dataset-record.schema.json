@@ -1,5 +1,6 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://github.com/kamerozkan/ats-job-change-feed-sample/raw/main/schema/dataset-record.schema.json",
   "title": "ATS Jobs Scraper API dataset record",
   "description": "A normalized open job or CREATED, UPDATED, or CLOSED event from the ATS Jobs Scraper API Actor.",
   "type": "object",

@@ -15,12 +15,28 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install pinned validation dependencies
+        run: npm ci
+
       - name: Validate JSON files and current input names
         run: |
           set -euo pipefail
-          for file in examples/*.json outputs/*.json schema/*.json; do
+          for file in benchmarks/*.json examples/*.json outputs/*.json schema/*.json; do
             jq empty "$file"
           done
           test "$(jq -r '.watchlistId' examples/company-domain-discovery.json)" = "linear-company-discovery"
           test "$(jq -r '.watchlistId' examples/greenhouse-change-monitor.json)" = "greenhouse-example"
           test "$(jq -r '.watchlistId' examples/multi-ats-current-jobs.json)" = "multi-ats-example"
+          test "$(jq -r '.watchlistId' examples/ten-minute-freshness-monitor.json)" = "ten-minute-freshness-monitor"
+          test "$(jq -r '.watchlistId' examples/ten-thousand-board-catalog.json)" = "production-10k"
+          test "$(jq '.boards | length' benchmarks/pilot-500-boards.json)" = "500"
+          test "$(jq -r '.successRatePercent' benchmarks/pilot-500-recheck-report.json)" = "100"
+
+      - name: Validate sample outputs against the public dataset schema
+        run: npm run release:check

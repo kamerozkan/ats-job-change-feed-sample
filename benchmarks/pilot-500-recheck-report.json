@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-07-26T13:01:48.937Z",
+  "completedAt": "2026-07-26T13:02:35.703Z",
+  "durationMs": 46770,
+  "requested": 500,
+  "succeeded": 500,
+  "failed": 0,
+  "successRatePercent": 100,
+  "jobsObserved": 15923,
+  "byAts": {
+    "greenhouse": {
+      "requested": 90,
+      "succeeded": 90,
+      "failed": 0,
+      "successRatePercent": 100
+    },
+    "lever": {
+      "requested": 15,
+      "succeeded": 15,
+      "failed": 0,
+      "successRatePercent": 100
+    },
+    "ashby": {
+      "requested": 75,
+      "succeeded": 75,
+      "failed": 0,
+      "successRatePercent": 100
+    },
+    "workable": {
+      "requested": 110,
+      "succeeded": 110,
+      "failed": 0,
+      "successRatePercent": 100
+    },
+    "recruitee": {
+      "requested": 55,
+      "succeeded": 55,
+      "failed": 0,
+      "successRatePercent": 100
+    },
+    "personio": {
+      "requested": 65,
+      "succeeded": 65,
+      "failed": 0,
+      "successRatePercent": 100
+    },
+    "teamtailor": {
+      "requested": 45,
+      "succeeded": 45,
+      "failed": 0,
+      "successRatePercent": 100
+    },
+    "workday": {
+      "requested": 45,
+      "succeeded": 45,
+      "failed": 0,
+      "successRatePercent": 100
+    }
+  },
+  "failedBoards": [],
+  "acceptance": {
+    "fetchSuccessRateAtLeast98Percent": true
+  }
+}

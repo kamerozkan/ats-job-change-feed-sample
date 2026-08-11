@@ -1,0 +1,14 @@
+{
+  "name": "ats-job-change-feed-sample",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:samples": "node scripts/validate-samples.mjs",
+    "release:check": "npm run validate:samples && npm audit --audit-level=high"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  }
+}

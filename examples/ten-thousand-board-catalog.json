@@ -1,0 +1,26 @@
+{
+  "boards": [],
+  "companyUrls": [],
+  "catalog": {
+    "enabled": true,
+    "catalogId": "production-10k",
+    "bootstrapBundled": true,
+    "process": true,
+    "chunkSize": 100,
+    "staleAfterDays": 7,
+    "expireAfterDays": 30,
+    "maxConsecutiveFailures": 5,
+    "retryAfterMinutes": 60,
+    "includeStatuses": ["PENDING", "ACTIVE", "RETRY", "STALE"]
+  },
+  "outputMode": "changes",
+  "watchlistId": "production-10k",
+  "includeDescriptions": false,
+  "includeCompensation": false,
+  "emitInitialSnapshotChanges": false,
+  "maxConcurrency": 20,
+  "requestTimeoutSecs": 30,
+  "maxRequestRetries": 2,
+  "failOnBoardError": false,
+  "freshnessSlaMinutes": 10
+}

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-07-26T12:56:43.311Z",
+  "completedAt": "2026-07-26T12:58:33.030Z",
+  "targetCompanies": 500,
+  "selectedCompanies": 500,
+  "targetMet": true,
+  "candidateSource": {
+    "generatedAt": "2026-07-26T12:55:19.763Z",
+    "candidatesAvailable": 10694,
+    "attempted": 994
+  },
+  "firstPass": {
+    "durationMs": 53117,
+    "succeeded": 500,
+    "boardFetchSuccessRatePercent": 100,
+    "historicalCandidateHitRatePercent": 50.3,
+    "openJobs": 15923,
+    "byAts": {
+      "greenhouse": 90,
+      "lever": 15,
+      "ashby": 75,
+      "workable": 110,
+      "recruitee": 55,
+      "personio": 65,
+      "teamtailor": 45,
+      "workday": 45
+    }
+  },
+  "immediateRepeat": {
+    "durationMs": 56599,
+    "succeeded": 446,
+    "failed": 54,
+    "successRatePercent": 89.2,
+    "observedChanges": {
+      "created": 0,
+      "updated": 0,
+      "closed": 0
+    },
+    "note": "Failed repeat fetches are excluded from diffing, so they cannot emit synthetic CLOSED events. Observed changes on successful fetches may be real source changes."
+  },
+  "quality": {
+    "generatedAt": "2026-07-26T12:58:33.019Z",
+    "pilotTargetCompanies": 500,
+    "companiesObserved": 500,
+    "companyTargetProgressPercent": 100,
+    "boards": {
+      "requested": 500,
+      "succeeded": 500,
+      "failed": 0,
+      "successRate": 100
+    },
+    "discovery": {
+      "requested": 0,
+      "found": 0,
+      "failed": 0,
+      "noBoardFound": 0,
+      "resolutionRate": null
+    },
+    "jobs": {
+      "open": 15923,
+      "duplicateRecords": 0,
+      "duplicateGroups": 0,
+      "dach": 1002,
+      "byDachRegion": {
+        "AT": 13,
+        "CH": 55,
+        "DE": 930,
+        "MULTI": 4
+      },
+      "byAts": {
+        "ashby": 2078,
+        "greenhouse": 1759,
+        "lever": 703,
+        "personio": 897,
+        "recruitee": 632,
+        "teamtailor": 586,
+        "workable": 985,
+        "workday": 8283
+      }
+    },
+    "completenessPercent": {
+      "company": 100,
+      "title": 100,
+      "location": 99.84,
+      "description": 0,
+      "employmentType": 57.28,
+      "workplaceType": 20.95,
+      "publishedAt": 47.98,
+      "updatedAt": 15.02,
+      "sourceUrl": 100,
+      "applyUrl": 100
+    },
+    "enrichmentCoveragePercent": {
+      "structuredLocation": 99.84,
+      "kldb": 42.88,
+      "languageRequirements": 0.5,
+      "skills": 1.33,
+      "salary": 0,
+      "companyDomain": 0
+    },
+    "errorsByAts": {
+      "greenhouse": [],
+      "lever": [],
+      "ashby": [],
+      "workable": [],
+      "recruitee": [],
+      "personio": [],
+      "teamtailor": [],
+      "workday": []
+    }
+  },
+  "failuresByAts": {
+    "greenhouse": 13,
+    "lever": 1,
+    "ashby": 13,
+    "workable": 1,
+    "recruitee": 40,
+    "personio": 26,
+    "teamtailor": 2,
+    "workday": 7
+  },
+  "acceptance": {
+    "companiesAtLeast500": true,
+    "firstPassFetchSuccessRateAtLeast98Percent": true,
+    "repeatFetchSuccessRateAtLeast98Percent": false,
+    "requiredFieldsComplete": true,
+    "noFailureGeneratedClosures": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://github.com/kamerozkan/ats-job-change-feed-sample/raw/main/schema/dataset-record-list.schema.json",
+  "title": "ATS Jobs Scraper API sample dataset",
+  "type": "array",
+  "items": {
+    "$ref": "https://github.com/kamerozkan/ats-job-change-feed-sample/raw/main/schema/dataset-record.schema.json"
+  }
+}

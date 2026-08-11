@@ -1,0 +1,15 @@
+{
+  "boards": [],
+  "companyUrls": [
+    "https://linear.app/careers"
+  ],
+  "outputMode": "changes",
+  "watchlistId": "ten-minute-freshness-monitor",
+  "includeDescriptions": true,
+  "includeCompensation": true,
+  "emitInitialSnapshotChanges": true,
+  "freshnessSlaMinutes": 10,
+  "maxConcurrency": 10,
+  "failOnBoardError": false,
+  "failOnDiscoveryError": true
+}
