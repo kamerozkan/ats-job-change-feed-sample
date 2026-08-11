@@ -36,11 +36,14 @@ The five inputs are synchronized with the maintained Actor package. The output f
 clearly labeled, structurally valid, sanitized samples that avoid redistributing third-party
 job descriptions.
 
-## Reproducible quality evidence
+## Release verification and reproducible benchmark
 
-Actor build `1.0.24` was verified on 11 August 2026 with 48/48 deterministic tests,
-8/8 live ATS endpoint checks, and a cloud smoke run that returned 13 normalized
-Greenhouse jobs with one requested board, one successful board, and zero failed boards.
+[Actor build `1.0.24`](https://api.apify.com/v2/actor-builds/bRGRcBuMoQw4W5Hov)
+was verified on 11 August 2026 with 48/48 deterministic tests and 8/8 live ATS
+endpoint checks. Owner-authenticated cloud smoke run `ClCFFczmcOc2zBmsq` returned 13
+normalized Greenhouse jobs with one requested board, one successful board, and zero
+failed boards. Apify keeps that run's storage access-controlled; the fixed benchmark
+below is the public reproducible artifact.
 
 The fixed public benchmark is intentionally date-scoped. On 26 July 2026, its first pass
 resolved all 500 boards and observed 15,923 open jobs. An immediate repeat reached only 89.2%
