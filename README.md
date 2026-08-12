@@ -14,6 +14,19 @@ The hosted Actor normalizes current jobs and emits deterministic `CREATED`,
 a source fails, which prevents a temporary error from becoming a false mass
 closure.
 
+## Choose a live workflow
+
+| Goal | Live Apify Example | Output |
+| --- | --- | --- |
+| Trigger CRM or account-research workflows from hiring changes | [Track competitor hiring changes](https://apify.com/kamerozkan/ats-job-change-feed/examples/track-competitor-hiring-changes) | Only `CREATED`, `UPDATED`, and `CLOSED` events after the baseline |
+| Build a normalized job-alert or recruiting-analytics feed | [Build a multi-ATS job change feed](https://apify.com/kamerozkan/ats-job-change-feed/examples/build-multi-ats-job-change-feed) | Stable job IDs, provenance, and lifecycle events |
+| Export current jobs from company career pages | [Scrape company career pages](https://apify.com/kamerozkan/ats-job-change-feed/examples/scrape-company-career-pages) | Current normalized job rows |
+| Analyze DACH hiring signals | [Track DACH job market signals](https://apify.com/kamerozkan/ats-job-change-feed/examples/track-dach-job-market-signals) | Jobs plus DACH locations, skills, languages, and salary signals |
+
+Open an Example, replace its company URL or board URL, and run one capped baseline. Check
+`RUN_SUMMARY`, then save the input as a scheduled task with the same `watchlistId`. Start
+with one or two companies before expanding the watchlist.
+
 ## What is included
 
 | File | Use case |
@@ -38,12 +51,14 @@ job descriptions.
 
 ## Release verification and reproducible benchmark
 
-[Actor build `1.0.24`](https://api.apify.com/v2/actor-builds/bRGRcBuMoQw4W5Hov)
-was verified on 11 August 2026 with 48/48 deterministic tests and 8/8 live ATS
-endpoint checks. Owner-authenticated cloud smoke run `ClCFFczmcOc2zBmsq` returned 13
-normalized Greenhouse jobs with one requested board, one successful board, and zero
-failed boards. Apify keeps that run's storage access-controlled; the fixed benchmark
-below is the public reproducible artifact.
+[Actor build `1.0.25`](https://api.apify.com/v2/actor-builds/CMLRI1bCJUD8Q6o0E)
+was verified on 12 August 2026 with 48/48 deterministic tests and all four Apify schemas.
+Exact-build baseline run `taPJKUXFQAB8u3YpF` returned 17 unique Greenhouse `CREATED`
+rows with one requested board, one successful board, zero failed boards, and zero rows
+missing core fields. Immediate repeat run `W1zzg1pNne7kH3xbZ` found the same 17 open jobs,
+emitted zero duplicate changes, and charged zero `job-result` events. Owner QA events are
+not counted as creator revenue. Apify keeps those run storages access-controlled; the fixed
+benchmark below is the public reproducible artifact.
 
 The fixed public benchmark is intentionally date-scoped. On 26 July 2026, its first pass
 resolved all 500 boards and observed 15,923 open jobs. An immediate repeat reached only 89.2%
@@ -261,6 +276,12 @@ The hosted Actor uses pay-per-event billing. One Actor-start event is charged pe
 dataset rows and create no `job-result` charges. Plan-based volume discounts are configured;
 see the [live Store pricing](https://apify.com/kamerozkan/ats-job-change-feed) before running a
 large baseline.
+
+At the current Free and Bronze event prices and default 512 MB memory, the estimate is:
+
+```text
+monthly cost = ($0.005 x runs) + ($0.002 x baseline and change rows)
+```
 
 ## FAQ
 
