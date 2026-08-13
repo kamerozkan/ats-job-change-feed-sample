@@ -20,11 +20,13 @@ resumes, or other secrets.
 
 ## Release audit
 
-- Actor version: `1.0.25`
-- Build: `CMLRI1bCJUD8Q6o0E`, successful on 2026-08-12
-- Baseline smoke: `taPJKUXFQAB8u3YpF`, 1/1 board, 17 unique `CREATED` rows
-- Immediate repeat: `W1zzg1pNne7kH3xbZ`, zero duplicate rows and zero `job-result` charges
+- Actor version: `1.0.26`
+- Build: `2q6dQtCcq3ytdjxkj`, successful on 2026-08-13
+- Baseline smoke: `tNyT74OcZ5VMtmKWs`, 1/1 board, 17 unique `CREATED` rows
+- Immediate repeat: `Ad26FZiUGsaBnHWy6`, zero duplicate rows and zero `job-result` charges
+- Maximum charge: `$0.10` per smoke; platform usage was `$0.0005470156592842605` and
+  `$0.00039059026687840627` respectively
 - Scope: exact-build owner QA, not external customer or paid-retention evidence
 
-The sanitized output fixtures in this repository were not regenerated for `1.0.25` and retain
+The sanitized output fixtures in this repository were not regenerated for `1.0.26` and retain
 their prior provenance. They demonstrate the public schema rather than the live smoke contents.

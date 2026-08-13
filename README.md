@@ -67,11 +67,11 @@ job descriptions.
 
 ## Release verification and reproducible benchmark
 
-[Actor build `1.0.25`](https://api.apify.com/v2/actor-builds/CMLRI1bCJUD8Q6o0E)
-was verified on 12 August 2026 with 48/48 deterministic tests and all four Apify schemas.
-Exact-build baseline run `taPJKUXFQAB8u3YpF` returned 17 unique Greenhouse `CREATED`
+[Actor build `1.0.26`](https://api.apify.com/v2/actor-builds/2q6dQtCcq3ytdjxkj)
+was verified on 13 August 2026 with 48/48 deterministic tests and all four Apify schemas.
+Exact-build baseline run `tNyT74OcZ5VMtmKWs` returned 17 unique Greenhouse `CREATED`
 rows with one requested board, one successful board, zero failed boards, and zero rows
-missing core fields. Immediate repeat run `W1zzg1pNne7kH3xbZ` found the same 17 open jobs,
+missing core fields. Immediate repeat run `Ad26FZiUGsaBnHWy6` found the same 17 open jobs,
 emitted zero duplicate changes, and charged zero `job-result` events. Owner QA events are
 not counted as creator revenue. Apify keeps those run storages access-controlled; the fixed
 benchmark below is the public reproducible artifact.
