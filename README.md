@@ -1,11 +1,11 @@
-# ATS Job Scraper API and Career Page Monitor Examples
+# ATS Job Change Feed API and Career Page Monitor Examples
 
 [![Validate examples](https://github.com/kamerozkan/ats-job-change-feed-sample/actions/workflows/validate-examples.yml/badge.svg)](https://github.com/kamerozkan/ats-job-change-feed-sample/actions/workflows/validate-examples.yml)
 
-> **Live maintained API:** [Run ATS Jobs Scraper API on Apify](https://apify.com/kamerozkan/ats-job-change-feed)
+> **Live maintained API:** [Run ATS Job Change Feed API on Apify](https://apify.com/kamerozkan/ats-job-change-feed)
 
-Production-oriented input and output examples for an **ATS job scraper API**, **career page
-monitor**, and **job change feed** covering eight applicant tracking systems:
+Production-oriented input and output examples for an **ATS job change feed API**, **career
+page monitor**, and supporting **job scraper API** covering eight applicant tracking systems:
 Greenhouse, Workday, Lever, Ashby, Workable, Personio, Recruitee, and
 Teamtailor.
 
