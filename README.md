@@ -27,6 +27,22 @@ Open an Example, replace its company URL or board URL, and run one capped baseli
 `RUN_SUMMARY`, then save the input as a scheduled task with the same `watchlistId`. Start
 with one or two companies before expanding the watchlist.
 
+## Buyer workflows for agencies, RPOs, and market intelligence
+
+Use one stable `watchlistId` per client, portfolio, or research cohort so the baseline and
+later changes stay isolated from other accounts.
+
+| Buyer | Operational workflow | Output used downstream | Boundary |
+| --- | --- | --- | --- |
+| Recruitment agency or executive search team | Monitor target employers and client career pages for role openings and closures | Company, role, location, source URL, timestamps, and `CREATED`, `UPDATED`, or `CLOSED` | A hiring change is a prospecting signal, not proof that an employer will buy recruitment services |
+| RPO or MSP team | Reconcile public client requisitions across supported ATS career pages | Stable job IDs, explicit lifecycle changes, and `RUN_SUMMARY` board outcomes | No private requisitions, candidates, applications, or client ATS access |
+| Recruitment market intelligence team | Build a source-direct time series by role, location, skill, language, salary signal, or ATS | Normalized records, provenance, duplicate markers, and change timestamps | Enrichment is heuristic metadata and needs review before regulated or statistical use |
+| Private equity, venture capital, or portfolio operations team | Monitor public portfolio-company and target-company hiring activity in separate cohorts | Current jobs plus new, edited, and closed role events | Public hiring activity is not verified headcount, financial performance, or investment advice |
+
+The hosted product can therefore serve as an **RPO job monitoring API**, **recruitment market
+intelligence feed**, or **portfolio company hiring monitor**. It does not replace an ATS,
+CRM, investment data room, or human review.
+
 ## What is included
 
 | File | Use case |
@@ -283,6 +299,33 @@ At the current Free and Bronze event prices and default 512 MB memory, the estim
 monthly cost = ($0.005 x runs) + ($0.002 x baseline and change rows)
 ```
 
+### Buyer-scale planning examples
+
+These are calculator examples, not usage forecasts. Each row assumes one daily task, one
+baseline on day 1, 29 later runs, default 512 MB memory, and the current Free/Bronze event
+prices. Billing follows Actor starts and emitted rows, not board count itself.
+
+| Example cohort | Boards | Baseline rows | Change rows per later run | 30-day calculation | Estimated total |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Agency pilot | 25 | 1,000 | 20 | `(30 x $0.005) + ((1,000 + 29 x 20) x $0.002)` | `$3.31` |
+| RPO client portfolio | 100 | 5,000 | 100 | `(30 x $0.005) + ((5,000 + 29 x 100) x $0.002)` | `$15.95` |
+| Market or investment research cohort | 500 | 25,000 | 500 | `(30 x $0.005) + ((25,000 + 29 x 500) x $0.002)` | `$79.15` |
+
+Replace the assumptions with a capped baseline and an observed week of changes. Separate
+cohorts can require separate tasks, which add Actor-start events. Large watchlists also need
+an account-specific concurrency, runtime, and maximum-charge check.
+
+### Evaluate ROI without an invented savings claim
+
+```text
+break-even accepted signals = monthly Actor cost / measured value per accepted signal
+```
+
+Count only signals that a recruiter, analyst, CRM rule, or portfolio workflow actually
+accepts. If the comparison is manual research time, measure the current minutes per board
+and the fully loaded hourly cost first. Do not treat every emitted row as revenue or labor
+savings.
+
 ## FAQ
 
 ### Why can a successful run return an empty dataset?
@@ -299,6 +342,44 @@ malformed response. A failed source therefore cannot create synthetic `CLOSED` e
 
 No. The Actor reads public company career pages and public job feeds only. It does not access
 candidate profiles, applications, resumes, or private ATS accounts.
+
+### Is it suitable for a recruitment agency or RPO?
+
+Yes, when the workflow starts from public employer career pages and uses changes as research
+or reconciliation inputs. Keep one `watchlistId` per client or account cohort. It does not
+provide candidate data, private requisitions, contact details, or proof that an employer is
+ready to buy recruitment services.
+
+### Can it monitor portfolio companies?
+
+Yes, for consistent monitoring of public portfolio-company career pages. The output is not a
+verified headcount feed, financial metric, valuation input, or investment recommendation.
+
+### How should I estimate a large watchlist?
+
+Run a capped representative baseline, observe one week of changes, and use those values in
+the pricing formula. Then test task count and concurrency in your own Apify account. A board
+deferred for budget does not advance its snapshot.
+
+### Does failure-safe closure detection mean sources never fail?
+
+No. Public career boards can time out, throttle requests, change format, or disappear. An
+invalid fetch keeps the last successful snapshot and does not fabricate `CLOSED` events.
+Inspect `boardsFailed`, `failedBoards`, and `boardsSkippedForBudget` in `RUN_SUMMARY` before
+consuming a run downstream.
+
+## Failure report checklist
+
+Open an [issue on the Actor page](https://apify.com/kamerozkan/ats-job-change-feed/issues)
+with the public board URL and ATS provider, run ID, displayed build number, expected and
+actual behavior, relevant `RUN_SUMMARY` counts, one sanitized `failedBoards` entry, and the
+smallest reproducing input.
+
+Do not post API tokens, candidate information, private ATS data, client-confidential names,
+full account exports, or other secrets. If the client identity is confidential, reproduce
+the behavior with a public non-client board before using the public issue route. Failure-safe
+closure handling is not a support SLA or a promise that every public source remains
+available.
 
 ## Responsible use
 
