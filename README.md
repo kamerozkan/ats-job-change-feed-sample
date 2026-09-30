@@ -1,4 +1,8 @@
-# ATS Job Change Feed API and Career Page Monitor Examples
+# Greenhouse Jobs Scraper - Workday, Lever & Ashby: Samples
+
+Greenhouse jobs scraper and ATS job change feed for Workday, Lever, Ashby, Workable, Personio, Recruitee and Teamtailor. Export normalized job postings with stable IDs and CREATED, UPDATED or CLOSED events. Failed sources retain their last healthy state to prevent false closures.
+
+[Run Greenhouse Jobs Scraper - Workday, Lever & Ashby on Apify](https://apify.com/kamerozkan/ats-job-change-feed)
 
 [![Validate examples](https://github.com/kamerozkan/ats-job-change-feed-sample/actions/workflows/validate-examples.yml/badge.svg)](https://github.com/kamerozkan/ats-job-change-feed-sample/actions/workflows/validate-examples.yml)
 

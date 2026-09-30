@@ -1,0 +1,15 @@
+{
+  "id": "2PmycnuZxZaDzgDKq",
+  "name": "ats-job-change-feed",
+  "title": "Greenhouse Jobs Scraper - Workday, Lever & Ashby",
+  "description": "Greenhouse jobs scraper and ATS job change feed for Workday, Lever, Ashby, Workable, Personio, Recruitee and Teamtailor. Export normalized job postings with stable IDs and CREATED, UPDATED or CLOSED events. Failed sources retain their last healthy state to prevent false closures.",
+  "seoTitle": "Greenhouse Jobs Scraper & ATS Job Change Feed",
+  "seoDescription": "Scrape Greenhouse, Workday, Lever, Ashby and four ATS platforms. Export normalized jobs with created, updated or closed events for career-page monitoring.",
+  "isPublic": true,
+  "url": "https://apify.com/kamerozkan/ats-job-change-feed",
+  "checkedAt": "2026-09-30",
+  "changeScope": "listing metadata and sample documentation only",
+  "runtimeChanged": false,
+  "schemasChanged": false,
+  "examplesRegenerated": false
+}
